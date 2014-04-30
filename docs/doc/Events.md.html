@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Events - Events.md</title>
+
+  <link rel="stylesheet" href="../assets/style.css">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+  <meta name="groc-relative-root" content="../"/>
+  <meta name="groc-document-path" content="doc/Events.md"/>
+  
+</head>
+<body>
+  <div id="file-area">
+    <div id="meta">
+      <code class="file-path">
+      
+        <a href="https://github.com/novemberborn/helo/blob/master/doc/Events.md">doc/Events.md</a>
+      
+      </code>
+    </div>
+    <div id="document">
+    
+      <div class="segment">
+      
+        <div class="comments ">
+          <div class="wrapper"><h1 id="events"><a href="#events" class="anchor"></a>Events</h1><p>Events are emitted from the stack when new requests are made, errors occur, or
+responses are written.</p>
+<h2 id="state-object"><a href="#state-object" class="anchor"></a>State object</h2><p>The first argument for every emitted event is a state object, with the
+following properties:</p>
+<ul>
+<li><code>incomingMessage</code>: The incoming message.</li>
+<li><code>outgoingMessage</code>: The outgoing message.</li>
+<li><code>request</code>: The request instantiated for the stack.</li>
+<li><code>response</code>: The final response that&#39;s supposed to be written to the outgoing
+message.</li>
+<li><code>streaming</code>: Whether the response is being streamed to the outgoing message.</li>
+</ul>
+<h2 id="request-event"><a href="#request-event" class="anchor"></a><code>request</code> event</h2><p>Emitted immediately after a request is instantiated.</p>
+<h2 id="cancelerror-event"><a href="#cancelerror-event" class="anchor"></a><code>cancelError</code> event</h2><p>Emitted when the response promise is rejected with an error whose <code>name</code> is
+<code>cancel</code>. The error is passed as the second argument.</p>
+<h2 id="timeouterror-event"><a href="#timeouterror-event" class="anchor"></a><code>timeoutError</code> event</h2><p>Emitted when the response promise is rejected with an error whose <code>name</code> is
+<code>timeout</code>. The error is passed as the second argument.</p>
+<h2 id="internalerror-event"><a href="#internalerror-event" class="anchor"></a><code>internalError</code> event</h2><p>Emitted when the response promise is rejected with any other error. The error
+is passed as the second argument.</p>
+<h2 id="response-event"><a href="#response-event" class="anchor"></a><code>response</code> event</h2><p>Emitted just before the headers are written to the outgoing message.</p>
+<h2 id="responsefinish-event"><a href="#responsefinish-event" class="anchor"></a><code>responseFinish</code> event</h2><p>Emitted when the outgoing message emits its <code>finish</code> event.</p>
+<h2 id="responsecancel-event"><a href="#responsecancel-event" class="anchor"></a><code>responseCancel</code> event</h2><p>Emitted when the outgoing message emits its <code>close</code> event while the response is
+being written.</p>
+<h2 id="streamingerror-event"><a href="#streamingerror-event" class="anchor"></a><code>streamingError</code> event</h2><p>Emitted if errors occurred when piping the response stream. The error is passed
+as the second argument.</p>
+<h2 id="streamobservationfailed-event"><a href="#streamobservationfailed-event" class="anchor"></a><code>streamObservationFailed</code> event</h2><p>Emitted when listening for <code>error</code> events from the response stream throws an
+error. The error is passed as the second argument.</p>
+</div>
+        </div>
+      
+      
+      </div>
+    
+    </div>
+  </div>
+
+  <script src="../toc.js"></script>
+  <script src="../assets/libs.js"></script>
+  <script src="../assets/behavior.js"></script>
+</body>
+</html>
