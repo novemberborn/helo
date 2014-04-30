@@ -1,0 +1,12 @@
+{
+  "glob": [
+    "README.md",
+    "doc/*.md",
+    "lib/main.js",
+    "lib/Stack.js",
+    "lib/isRequest.js"
+  ],
+  "github": false,
+  "out": "doc/",
+  "index": "README.md"
+}

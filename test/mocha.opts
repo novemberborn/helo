@@ -1,0 +1,4 @@
+--reporter spec
+--timeout 200
+--require test/support/node
+test/unit/*.js test/integration/*.js
