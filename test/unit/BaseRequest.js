@@ -41,6 +41,11 @@ describe('BaseRequest(incomingMessage)', function() {
   describe('#path', function() {
     it('is derived from `incomingMessage.url`', function() {
       assert.equal(request.path, '/pathname?query');
+
+      var request2 = new BaseRequest(
+        new stubs.IncomingMessage(
+          null, null, 'http://example.com/pathname'));
+      assert.equal(request2.path, '/pathname');
     });
   });
 
