@@ -1,6 +1,6 @@
 {
   "name": "helo",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Promise-based HTTP request handling stack.",
   "main": "lib/main.js",
   "scripts": {
