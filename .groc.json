@@ -4,7 +4,8 @@
     "doc/*.md",
     "lib/main.js",
     "lib/Stack.js",
-    "lib/isRequest.js"
+    "lib/isRequest.js",
+    "lib/parseForm.js"
   ],
   "github": false,
   "out": "doc/",
