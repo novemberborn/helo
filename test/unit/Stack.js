@@ -100,7 +100,7 @@ describe('Stack', function() {
       });
 
       it('is different between stacks', function() {
-        assert.notStrictEqual(new Stack().chunki, new Stack().chunkifiers);
+        assert.notStrictEqual(new Stack().chunkifiers, new Stack().chunkifiers);
       });
     });
   });
