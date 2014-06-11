@@ -564,5 +564,63 @@ describe('RequestHandler', function() {
         });
       });
     });
+
+    describe('listening to the outgoing message’s `finish` event', function() {
+      var listening;
+      beforeEach(function() {
+        listening = mockedOutgoing.expects('once').once()
+          .withExactArgs('finish', sinon.match.func);
+      });
+
+      describe('when responding with a stream', function() {
+        it('listens before the stream is piped', function(done) {
+          var stream = new stubs.Stream();
+          var piping = sinon.spy(stream, 'pipe');
+
+          handler._writeResponse(
+            Promise.from({ stream: stream }),
+            { request: {}, outgoingMessage: outgoing });
+
+          setTimeout(function() {
+            mockedOutgoing.verify();
+            assert.callOrder(listening, piping);
+            done();
+          }, 5);
+        });
+      });
+
+      describe('when writing multiple chunks', function() {
+        it('listens before the first chunk is written', function(done) {
+          var written = mockedOutgoing.expects('write').twice();
+
+          handler._writeResponse(
+            Promise.from({ html: ['foo', 'bar'] }),
+            { request: {}, outgoingMessage: outgoing });
+
+          setTimeout(function() {
+            mockedOutgoing.verify();
+            assert.callOrder(listening, written);
+            done();
+          }, 5);
+        });
+      });
+
+      describe('when writing zero or one chunks', function() {
+        it('listens before the outgoing message is ended', function(done) {
+          var ended = mockedOutgoing.expects('end').once();
+
+          handler._writeResponse(
+            Promise.from({ chunk: new Buffer('foo') }),
+            { request: {}, outgoingMessage: outgoing });
+
+          setTimeout(function() {
+            mockedOutgoing.verify();
+            assert.callOrder(listening, ended);
+            done();
+          }, 5);
+
+        });
+      });
+    });
   });
 });
