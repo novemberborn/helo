@@ -3,6 +3,10 @@ helo
 
 Promise-based HTTP request handling stack.
 
+## Deprecation Notice
+
+This module is no longer maintained. It still has some neat ideas though.
+
 ## Installation
 
 ```
